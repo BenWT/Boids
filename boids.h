@@ -33,13 +33,13 @@ using namespace Urho3D;
 const static int NumBoids = 100;
 
 class Boid {
-    static float Range_FAttract;
-    static float Range_FRepel;
-    static float Range_FAlign;
-    static float FAttract_Factor;
-    static float FRepel_Factor;
-    static float FAlign_Factor;
-    static float FAttract_Vmax;
+    static float rs; // Separation Range
+    static float cs; // Seperation Factor
+    static float rc; // Cohesion Range
+    static float cc; // Cohesion Factor
+    static float ra; // Alignment Range
+    static float ca; // Alignment Factor
+    static float vmax; // Maximum Velocity
 
 public:
     Vector3 force;

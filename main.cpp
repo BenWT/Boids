@@ -43,8 +43,8 @@
 #include <Urho3D/UI/Text.h>
 #include <Urho3D/UI/UI.h>
 
+#include "main.h"
 #include "Character.h"
-#include "CharacterDemo.h"
 #include "Touch.h"
 #include "boids.h"
 
