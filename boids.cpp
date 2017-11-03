@@ -71,12 +71,13 @@ void Boid::ComputeForce(Boid *pBoidList) {
         }
     }
 
+    // Cohesion
     if (pN > 0) {
         pMean /= pN;
-        fc = ((pMean - pRigidBody->GetPosition()).Normalized() * vmax) - pRigidBody->GetLinearVelocity();
-        // fc = (((pMean - pRigidBody->GetPosition()) / (pMean - pRigidBody->GetPosition()).Length()) * vmax) - pRigidBody->GetLinearVelocity();
+        fc = (((pMean - pRigidBody->GetPosition()) / (pMean - pRigidBody->GetPosition()).Length()) * vmax) - pRigidBody->GetLinearVelocity();
     }
 
+    // Alignment
     if (vN > 0) {
         vMean /= vN;
         fa = vMean - pRigidBody->GetLinearVelocity();

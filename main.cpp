@@ -46,13 +46,15 @@
 #include "main.h"
 #include "Character.h"
 #include "Touch.h"
-#include "boids.h"
+#include "Boids.h"
+#include "Missile.h"
 
 #include <Urho3D/DebugNew.h>
 
 URHO3D_DEFINE_APPLICATION_MAIN(CharacterDemo)
 
 BoidSet boids;
+MissileSet missiles;
 
 CharacterDemo::CharacterDemo(Context* context) :
     Sample(context),
@@ -122,6 +124,7 @@ void CharacterDemo::CreateScene()
     SubscribeToEvents();
     Sample::InitMouseMode(MM_RELATIVE);
     boids.Initialise(cache, scene_);
+    missiles.Initialise(cache, scene_);
 }
 
 void CharacterDemo::CreateCharacter()
@@ -174,7 +177,10 @@ void CharacterDemo::HandleUpdate(StringHash eventType, VariantMap& eventData)
     if (input->GetKeyDown(KEY_A)) cameraNode_->Translate(Vector3::LEFT * MOVE_SPEED * timeStep);
     if (input->GetKeyDown(KEY_D)) cameraNode_->Translate(Vector3::RIGHT * MOVE_SPEED * timeStep);
 
+    if (input->GetKeyDown(KEY_SPACE) && missiles.canShoot) missiles.DoShoot(cameraNode_);
+
     boids.Update(timeStep);
+    missiles.Update(timeStep);
 }
 
 void CharacterDemo::HandlePostUpdate(StringHash eventType, VariantMap& eventData)
