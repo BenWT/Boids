@@ -95,6 +95,8 @@ void MissileSet::Update(float tm) {
     }
 
     for (Vector<Missile>::Iterator m = missileList.Begin(); m < missileList.End(); m++) {
-        m->Update(tm);
+        if (m->pNode != NULL) {
+            m->Update(tm);
+        }
     }
 }

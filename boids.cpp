@@ -124,7 +124,9 @@ void BoidSet::Initialise(ResourceCache *pRes, Scene *pScene) {
 
 void BoidSet::Update(float tm) {
     for (int i = 0; i < NumBoids; i++) {
-        boidList[i].ComputeForce(&boidList[0]);
-        boidList[i].Update(tm);
+        if (boidList[i].pNode != NULL) {
+            boidList[i].ComputeForce(&boidList[0]);
+            boidList[i].Update(tm);
+        }
     }
 }

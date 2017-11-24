@@ -46,7 +46,7 @@ public:
     Node* pNode;
     StaticModel* pObject;
     RigidBody* pRigidBody;
-    CollisionShape* pCollisionShape;
+    CollisionShape* pCollisionShape;;
 
     // Methods
     Boid();
